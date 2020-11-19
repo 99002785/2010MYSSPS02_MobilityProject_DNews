@@ -55,6 +55,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onPause();
         Log.i(TAG,"onpause");
        if(remember.isChecked()) {
+           int i = 1;
+       }
+       else{
            restoreData();
        }
    }
