@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); //gives information about layout resource defined in activity_main.xml file
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         errorLayout.setVisibility(View.GONE);
         swipeRefreshLayout.setRefreshing(true);
 
-        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class); //used to instantiate the APIClient
 
         String country = Utils.getCountry();
         String language = Utils.getLanguage();
@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
 
         call.enqueue(new Callback<News>() {
             @Override
+            /**
+        Represents the successful result of invoking an API 
+        **/
             public void onResponse(Call<News> call, Response<News> response) {
                 if (response.isSuccessful() && response.body().getArticle() != null){
 
@@ -144,6 +147,9 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
             }
 
             @Override
+            /**
+              just show a message indicating an Internet connection issue
+              **/
             public void onFailure(Call<News> call, Throwable t) {
                 topHeadline.setVisibility(View.INVISIBLE);
                 swipeRefreshLayout.setRefreshing(false);
@@ -160,7 +166,9 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
 
 
     private void initListener(){
-
+     /**
+    Callback method to be invoked when an item in this AdapterView has been clicked.
+    **/
         adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -199,11 +207,11 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE); //Get the SearchView and set the searchable configuration
         final SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));//Assumes current activity is the searchable activity
         searchView.setQueryHint("Search Latest News...");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -234,7 +242,10 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
     }
 
     private void onLoadingSwipeRefresh(final String keyword){
-
+/**
+swipeRefreshLayout is to allow the users to refresh the screen manually
+**/
+    
         swipeRefreshLayout.post(
                 new Runnable() {
                     @Override

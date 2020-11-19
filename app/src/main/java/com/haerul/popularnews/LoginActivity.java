@@ -1,5 +1,4 @@
 package com.haerul.popularnews;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,12 +9,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.haerul.popularnews.database.DbAccessObj;
 
-
 public class LoginActivity extends AppCompatActivity {
-
     private static final String TAG = MainActivity.class.getSimpleName() ;
     public static final String MYPREFS = "myprefs";
     public static final String NAMEKEY = "namekey";
@@ -38,18 +34,15 @@ public class LoginActivity extends AppCompatActivity {
         dbAccessObj = new DbAccessObj(this);
         dbAccessObj.openDb();
     }
-
     @Override
     protected void onStart() {
         super.onStart();
         Log.i(TAG,"onStart");
-
     /* if(remember.isChecked())
        {
            restoreData();
       }*/
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -61,13 +54,11 @@ public class LoginActivity extends AppCompatActivity {
            restoreData();
        }
    }
-
     /**
      * this method will save data from edittexts into a sharedprefs
      */
     private void saveData() {
         Log.i(TAG,"saveData");
-
         //get the data from the edittext
         String name = nameEditText.getText().toString();
         String pwd = pwdEditText.getText().toString();
@@ -81,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         //save the file
         editor.apply();
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -91,14 +81,10 @@ public class LoginActivity extends AppCompatActivity {
         }*/
        /* else{
            // nameEditText.clear();
-
         }*/
-
     }
-
     private void restoreData(){
         Log.i(TAG,"restoreData");
-
         //open the file
         SharedPreferences preferences = getSharedPreferences(MYPREFS,MODE_PRIVATE);
         //read the file
@@ -108,33 +94,25 @@ public class LoginActivity extends AppCompatActivity {
         nameEditText.setText(name);
         pwdEditText.setText(pwd);
     }
-
     @Override
     protected void onStop() {
         super.onStop();
         Log.i(TAG,"onstop");
-
     }
-
     public void clickHandler(View view) {
         Log.e(TAG,"clickHandler");
-
         switch (view.getId()){
             case R.id.buttonlogin:
                 getCredentials();
                 break;
         }
     }
-
     private void startHome() {
         Intent hIntent = new Intent(LoginActivity.this, MainActivity.class);
        // hIntent.putExtra("mykey","abdul");
-
         startActivity(hIntent);
     }
-
     private void getCredentials() {
-
         String userentry = nameEditText.getText().toString();
         String username = dbAccessObj.uservalid(userentry);
         String pwd = dbAccessObj.query(userentry);
@@ -150,11 +128,7 @@ public class LoginActivity extends AppCompatActivity {
         else{
             Toast.makeText(this, "Invalid Username Kindly register", Toast.LENGTH_SHORT).show();
         }
-
     }
-
-
-
 
 
     public void handleDb(View view) {
@@ -162,12 +136,8 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.buttonput:
                 String title = nameEditText.getText().toString();
                 String subtitle = pwdEditText.getText().toString();
-
                 dbAccessObj.createRow(title,subtitle);
-
                 break;
         }
     }
-
 }
-

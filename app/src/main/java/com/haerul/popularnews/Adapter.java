@@ -38,6 +38,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
 
     @NonNull
     @Override
+    /**
+    to convert a res/layout/*.xml file defining a view into an actual View object 
+    **/
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
         return new MyViewHolder(view, onItemClickListener);
