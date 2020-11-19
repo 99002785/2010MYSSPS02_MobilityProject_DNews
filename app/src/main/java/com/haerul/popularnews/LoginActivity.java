@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.i(TAG,"onpause");
-       if(remember.isChecked()) {
+       if(remember.isChecked()) {  //To call the restored data when the app is on pause if the check box is checked
            int i = 1;
        }
        else{
@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
            // nameEditText.clear();
         }*/
     }
-    private void restoreData(){
+    private void restoreData(){  // to restore username and password
         Log.i(TAG,"restoreData");
         //open the file
         SharedPreferences preferences = getSharedPreferences(MYPREFS,MODE_PRIVATE);
@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStop();
         Log.i(TAG,"onstop");
     }
-    public void clickHandler(View view) {
+    public void clickHandler(View view) { //userLogin
         Log.e(TAG,"clickHandler");
         switch (view.getId()){
             case R.id.buttonlogin:
@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         String username = dbAccessObj.uservalid(userentry);
         String pwd = dbAccessObj.query(userentry);
         String userpwd = pwdEditText.getText().toString();
-        if(userentry.equals(username)){
+        if(userentry.equals(username)){   //validation of username and password
             if(pwd.equals(userpwd)){
                 startHome();
             }
@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void handleDb(View view) {
-        switch (view.getId()){
+        switch (view.getId()){  
             case R.id.buttonput:
                 String title = nameEditText.getText().toString();
                 String subtitle = pwdEditText.getText().toString();
