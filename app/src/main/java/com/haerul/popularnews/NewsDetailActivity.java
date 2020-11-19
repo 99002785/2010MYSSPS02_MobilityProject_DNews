@@ -92,7 +92,9 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         initWebView(mUrl);
 
     }
-
+    /**
+    to load a web url into the WebView
+    **/
     private void initWebView(String url){
         WebView webView = findViewById(R.id.webView);
         webView.getSettings().setLoadsImagesAutomatically(true);
