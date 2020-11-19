@@ -44,7 +44,9 @@ public class Utils {
 
         return isTime;
     }
-
+    /**
+    DateFormat is used for formatting a date into String based on specific locale that is provided as input
+    **/
     public static String DateFormat(String oldstringDate){
         String newDate;
         SimpleDateFormat dateFormat = new SimpleDateFormat("E, d MMM yyyy", new Locale(getCountry()));
@@ -58,13 +60,17 @@ public class Utils {
 
         return newDate;
     }
-
+    /**
+    returns the country/region code for this locale
+    **/
     public static String getCountry(){
         Locale locale = Locale.getDefault();
         String country = String.valueOf(locale.getCountry());
         return country.toLowerCase();
     }
-
+    /**
+    returns the language code for this locale
+    **/
     public static String getLanguage(){
         Locale locale = Locale.getDefault();
         String country = String.valueOf(locale.getLanguage());
