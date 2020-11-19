@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="enter_name">enter_name</string>
+    <string name="enter_pswd">enter_pswd</string>
+    <string name="remember_pswd">remember_pswd</string>
+    <string name="Login">Login</string>
+    <string name="Register">Register</string>
+</resources>
