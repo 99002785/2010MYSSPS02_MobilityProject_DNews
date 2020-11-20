@@ -1,4 +1,4 @@
-![CI](https://github.com/99002785/LoginNewsApp/workflows/CI/badge.svg)  [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MaterialView-brightgreen.svg?style=flat)]()
+![CI](https://github.com/99002785/LoginNewsApp/workflows/CI/badge.svg)  [![Android Arsenal](https://img.shields.io/badge/Android%20-RetrofitView-brightgreen.svg?style=flat)]()
 
 D News
 
