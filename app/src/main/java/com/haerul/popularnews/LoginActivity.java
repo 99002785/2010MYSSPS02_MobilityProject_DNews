@@ -119,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         String userpwd = pwdEditText.getText().toString();
         if(userentry.equals(username)){   //validation of username and password
             if(pwd.equals(userpwd)){
+                Toast.makeText(getApplicationContext(), "Hello "+username, Toast.LENGTH_SHORT).show();
                 startHome();
             }
             else{
